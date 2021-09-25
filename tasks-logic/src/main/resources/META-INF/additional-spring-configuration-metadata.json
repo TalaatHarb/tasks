@@ -1,0 +1,9 @@
+{
+	"properties": [
+		{
+			"name": "logging.level[net.talaatharb.tasks]",
+			"type": "java.lang.String",
+			"description": "logging level for everything in the application'"
+		}
+	]
+}

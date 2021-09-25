@@ -42,7 +42,7 @@
 	</dependencies>
 
     <build>
-        <finalName>employee-editor-webapp-${project.version}-runnable</finalName>
+        <finalName>tasks-webapp-${project.version}-runnable</finalName>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
