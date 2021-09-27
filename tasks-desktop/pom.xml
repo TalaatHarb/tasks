@@ -11,17 +11,22 @@
 	<name>tasks-desktop</name>
 	<description>Desktop version for the tasks application</description>
 
-    <properties>
+	<properties>
 		<javafx.version>18-ea+3</javafx.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>net.talaatharb</groupId>
 			<artifactId>tasks-logic</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
 			<version>${javafx.version}</version>

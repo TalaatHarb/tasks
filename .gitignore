@@ -7,7 +7,7 @@
 */.factorypath
 *.classpath
 target
-
+db
 
 # Log file
 *.log
