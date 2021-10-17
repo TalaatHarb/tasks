@@ -1,5 +1,7 @@
 package net.talaatharb.tasks.facades.impl;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 
 import net.talaatharb.tasks.dtos.TaskDto;
 import net.talaatharb.tasks.entities.Task;
+import net.talaatharb.tasks.exceptions.TaskNotFoundException;
 import net.talaatharb.tasks.mappers.TaskMapper;
 import net.talaatharb.tasks.services.TaskService;
 import net.talaatharb.tasks.utils.TaskTestUtils;
@@ -76,6 +79,21 @@ class TaskFacadeImplTest {
 
 		Mockito.verify(taskService).findTaskById(Mockito.any(UUID.class));
 		Mockito.verify(taskMapper).fromEntityToDTO(Mockito.any(Task.class));
+	}
+
+	// Test for testFindTaskById when taskService throws an exception
+	@Test
+	void testFindTaskByIdException() {
+		assertThrows(TaskNotFoundException.class, () -> {
+			UUID id = UUID.randomUUID();
+
+			Mockito.when(taskService.findTaskById(Mockito.any(UUID.class))).thenThrow(new TaskNotFoundException(id));
+
+			taskFacade.findTaskById(id);
+
+			Mockito.verify(taskService).findTaskById(Mockito.any(UUID.class));
+			Mockito.verify(taskMapper, Mockito.never()).fromEntityToDTO(Mockito.any(Task.class));
+		});
 	}
 
 }

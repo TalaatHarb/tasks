@@ -28,7 +28,6 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
 		this.applicationTitle = "Tasks";
 		this.fxml = fxml;
 		this.applicationContext = applicationContext;
-		log.info("Stage listener created");
 	}
 
 	@Override
@@ -39,11 +38,10 @@ public class StageListener implements ApplicationListener<StageReadyEvent> {
 			FXMLLoader fxmlLoader = new FXMLLoader(url);
 			fxmlLoader.setControllerFactory(applicationContext::getBean);
 			Parent root = fxmlLoader.load();
-			Scene scene = new Scene(root, 600, 600);
+			Scene scene = new Scene(root, 800, 600);
 			stage.setScene(scene);
 			stage.setTitle(this.applicationTitle);
 			stage.show();
-			log.info("Application window created");
 		} catch (IOException e) {
 			log.error(e.getMessage());
 		}
