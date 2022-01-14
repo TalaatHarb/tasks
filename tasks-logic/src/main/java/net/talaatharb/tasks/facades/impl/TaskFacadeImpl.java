@@ -7,13 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import net.talaatharb.tasks.dtos.TaskDto;
 import net.talaatharb.tasks.facades.TaskFacade;
 import net.talaatharb.tasks.mappers.TaskMapper;
 import net.talaatharb.tasks.services.TaskService;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class TaskFacadeImpl implements TaskFacade {
 

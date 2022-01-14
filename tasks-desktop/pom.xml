@@ -13,6 +13,7 @@
 
 	<properties>
 		<javafx.version>18-ea+3</javafx.version>
+		<testfx.version>4.0.16-alpha</testfx.version>
 	</properties>
 
 	<dependencies>
@@ -44,6 +45,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-junit5</artifactId>
+			<version>${testfx.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

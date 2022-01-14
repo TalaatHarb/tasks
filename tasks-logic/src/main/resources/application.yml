@@ -10,7 +10,7 @@ spring:
     open-in-view: false
     database: default
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   datasource:
     url: jdbc:h2:file:./db/tasks;AUTO_SERVER=TRUE;
     username: sa

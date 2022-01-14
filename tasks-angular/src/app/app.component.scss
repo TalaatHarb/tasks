@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-input{
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.task-add{
+    padding: 1rem;
+    margin: 0.5rem;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.task{
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: indigo;
+    font-size: 18px;
+    color: white;
+}

@@ -7,18 +7,18 @@ import org.springframework.stereotype.Component;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import net.talaatharb.tasks.dtos.TaskDto;
 import net.talaatharb.tasks.facades.TaskFacade;
 
+@Slf4j
 @Component
+@RequiredArgsConstructor
 public class TaskUiController {
 
 	private final TaskFacade taskFacade;
-
-	public TaskUiController(TaskFacade taskFacade) {
-		this.taskFacade = taskFacade;
-	}
 
 	@FXML
 	@Setter
@@ -26,16 +26,13 @@ public class TaskUiController {
 
 	@FXML
 	public void addTaskClicked() {
+		log.debug("Add task clicked");
 		String taskText = taskTextField.getText();
 		if (taskText != null && !taskText.isBlank()) {
 			TaskDto taskDto = new TaskDto(taskText, UUID.randomUUID(), false);
 			taskFacade.createTask(taskDto);
 			taskTextField.setText(Strings.EMPTY);
+			taskTextField.requestFocus();
 		}
 	}
-
-	@FXML
-	public void chooseTasksClicked() {
-	}
-
 }

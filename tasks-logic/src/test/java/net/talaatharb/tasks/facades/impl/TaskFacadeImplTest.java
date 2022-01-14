@@ -33,8 +33,8 @@ class TaskFacadeImplTest {
 
 	@Test
 	void testCreateTask() {
-		TaskDto taskDto = TaskTestUtils.createRandomTaskDto();
-		Task task = new Task();
+		final TaskDto taskDto = TaskTestUtils.createRandomTaskDto();
+		final Task task = new Task();
 
 		Mockito.when(taskMapper.fromDTOToEntity(Mockito.any(TaskDto.class))).thenReturn(task);
 		Mockito.when(taskService.createTask(Mockito.any(Task.class))).thenReturn(task);
@@ -48,7 +48,7 @@ class TaskFacadeImplTest {
 
 	@Test
 	void testDeleteTaskById() {
-		UUID id = UUID.randomUUID();
+		final UUID id = UUID.randomUUID();
 		taskFacade.deleteTaskById(id);
 		Mockito.verify(taskService).deleteTaskById(id);
 	}
@@ -62,7 +62,7 @@ class TaskFacadeImplTest {
 
 	@Test
 	void testFindAllTasksPageable() {
-		Pageable pageable = Pageable.ofSize(10);
+		final Pageable pageable = Pageable.ofSize(10);
 
 		taskFacade.findAllTasks(pageable);
 
@@ -71,7 +71,7 @@ class TaskFacadeImplTest {
 
 	@Test
 	void testFindTaskById() {
-		UUID id = UUID.randomUUID();
+		final UUID id = UUID.randomUUID();
 
 		Mockito.when(taskService.findTaskById(Mockito.any(UUID.class))).thenReturn(new Task());
 
@@ -81,11 +81,10 @@ class TaskFacadeImplTest {
 		Mockito.verify(taskMapper).fromEntityToDTO(Mockito.any(Task.class));
 	}
 
-	// Test for testFindTaskById when taskService throws an exception
 	@Test
-	void testFindTaskByIdException() {
+	void testFindTaskThatDoesNotExistById() {
 		assertThrows(TaskNotFoundException.class, () -> {
-			UUID id = UUID.randomUUID();
+			final UUID id = UUID.randomUUID();
 
 			Mockito.when(taskService.findTaskById(Mockito.any(UUID.class))).thenThrow(new TaskNotFoundException(id));
 
