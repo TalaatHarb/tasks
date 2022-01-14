@@ -1,5 +1,7 @@
 package net.talaatharb.tasks.services.impl;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Pageable;
 
 import net.talaatharb.tasks.entities.Task;
+import net.talaatharb.tasks.exceptions.TaskNotFoundException;
 import net.talaatharb.tasks.repositories.TaskRepository;
 import net.talaatharb.tasks.utils.TaskTestUtils;
 
@@ -26,7 +29,8 @@ class TaskServiceImplTest {
 
 	@Test
 	void testCreateTask() {
-		Task task = TaskTestUtils.createRandomTask();
+		final Task task = TaskTestUtils.createRandomTask();
+		task.setId(null);
 
 		taskService.createTask(task);
 
@@ -35,7 +39,7 @@ class TaskServiceImplTest {
 
 	@Test
 	void testDeleteTaskById() {
-		UUID id = UUID.randomUUID();
+		final UUID id = UUID.randomUUID();
 
 		taskService.deleteTaskById(id);
 
@@ -51,7 +55,7 @@ class TaskServiceImplTest {
 
 	@Test
 	void testFindAllTasksPageable() {
-		Pageable pageable = Pageable.ofSize(10);
+		final Pageable pageable = Pageable.ofSize(10);
 
 		taskService.findAllTasks(pageable);
 
@@ -60,14 +64,27 @@ class TaskServiceImplTest {
 
 	@Test
 	void testFindTaskById() {
-		Task task = TaskTestUtils.createRandomTask();
-		UUID id = task.getId();
+		final Task task = TaskTestUtils.createRandomTask();
+		final UUID id = task.getId();
 
 		Mockito.when(taskRepository.findById(Mockito.any(UUID.class))).thenReturn(Optional.of(task));
 
 		taskService.findTaskById(id);
 
 		Mockito.verify(taskRepository).findById(id);
+	}
+
+	@Test
+	void testFindTaskThatDoesNotExistById() {
+		final Task task = TaskTestUtils.createRandomTask();
+		final UUID id = task.getId();
+
+		Mockito.when(taskRepository.findById(Mockito.any(UUID.class))).thenReturn(Optional.empty());
+
+		assertThrows(TaskNotFoundException.class, () -> {
+			taskService.findTaskById(id);
+		});
+
 	}
 
 }

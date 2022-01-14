@@ -25,9 +25,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	@Transactional(readOnly = false)
 	public Task createTask(Task task) {
-		if (task.getId() == null) {
-			task.setId(UUID.randomUUID());
-		}
+		task.setId(UUID.randomUUID());
 		return taskRepository.save(task);
 	}
 

@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import net.talaatharb.tasks.entities.Task;
 
+/**
+ * Repository interface for interacting with the tasks table in the database
+ * @author mharb
+ *
+ */
 @Repository
 public interface TaskRepository extends JpaRepository<Task, UUID> {
 }
