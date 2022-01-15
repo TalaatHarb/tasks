@@ -13,6 +13,8 @@
 
 	<properties>
 		<javafx.version>17.0.1</javafx.version>
+		<testfx.version>4.0.16-alpha</testfx.version>
+		<monocole.version>jdk-11+26</monocole.version>
 	</properties>
 
 	<dependencies>
@@ -44,6 +46,18 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-junit5</artifactId>
+			<version>${testfx.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>openjfx-monocle</artifactId>
+			<version>${monocole.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

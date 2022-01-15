@@ -9,6 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entity for representing a task in the tasks table in the database
+ * @author mharb
+ *
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

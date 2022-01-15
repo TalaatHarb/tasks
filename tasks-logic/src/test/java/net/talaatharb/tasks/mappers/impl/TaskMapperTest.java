@@ -6,24 +6,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mapstruct.factory.Mappers;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 
 import net.talaatharb.tasks.dtos.TaskDto;
 import net.talaatharb.tasks.entities.Task;
-import net.talaatharb.tasks.mappers.TaskMapperImpl;
+import net.talaatharb.tasks.mappers.TaskMapper;
 import net.talaatharb.tasks.utils.TaskTestUtils;
 
-@ExtendWith(MockitoExtension.class)
 class TaskMapperTest {
 
-	@InjectMocks
-	private TaskMapperImpl taskMapper;
+	private TaskMapper taskMapper = Mappers.getMapper(TaskMapper.class);
 
-	private void assertEqualTaskAndDto(Task task, TaskDto taskDto) {
+	private void assertEqualEntityAndDto(Task task, TaskDto taskDto) {
 		assertEquals(taskDto.getDetails(), task.getDetails());
 		assertEquals(taskDto.getId(), task.getId());
 		assertEquals(taskDto.getStatus(), task.getStatus());
@@ -34,7 +30,7 @@ class TaskMapperTest {
 		assertEquals(dtosSize, tasks.size());
 
 		for (int i = 0; i < dtosSize; i++) {
-			assertEqualTaskAndDto(tasks.get(i), taskDtos.get(i));
+			assertEqualEntityAndDto(tasks.get(i), taskDtos.get(i));
 		}
 	}
 
@@ -42,7 +38,7 @@ class TaskMapperTest {
 	void testFromDTOToEntityTaskDto() {
 		TaskDto dto = TaskTestUtils.createRandomTaskDto();
 		Task entity = taskMapper.fromDTOToEntity(dto);
-		assertEqualTaskAndDto(entity, dto);
+		assertEqualEntityAndDto(entity, dto);
 	}
 
 	@Test
@@ -70,7 +66,7 @@ class TaskMapperTest {
 	void testFromEntityToDTOTask() {
 		Task entity = TaskTestUtils.createRandomTask();
 		TaskDto dto = taskMapper.fromEntityToDTO(entity);
-		assertEqualTaskAndDto(entity, dto);
+		assertEqualEntityAndDto(entity, dto);
 	}
 
 }

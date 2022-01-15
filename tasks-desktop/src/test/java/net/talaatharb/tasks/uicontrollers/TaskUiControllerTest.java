@@ -1,17 +1,20 @@
 package net.talaatharb.tasks.uicontrollers;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.testfx.framework.junit5.ApplicationExtension;
 
 import javafx.scene.control.TextField;
 import net.talaatharb.tasks.facades.TaskFacade;
 
+@ExtendWith(ApplicationExtension.class)
 @ExtendWith(MockitoExtension.class)
 class TaskUiControllerTest {
 	
@@ -31,12 +34,15 @@ class TaskUiControllerTest {
 
 	@Test
 	void testAddTaskClicked() {
-		fail("Not yet implemented");
+		taskTextField.setText(UUID.randomUUID().toString());
+		taskUiController.addTaskClicked();
+		Mockito.verify(taskFacade).createTask(Mockito.any());
 	}
-
+	
 	@Test
-	void testChooseTasksClicked() {
-		fail("Not yet implemented");
+	void testAddTaskClickedWithoutText() {
+		taskTextField.setText("");
+		taskUiController.addTaskClicked();
+		Mockito.verifyNoInteractions(taskFacade);
 	}
-
 }

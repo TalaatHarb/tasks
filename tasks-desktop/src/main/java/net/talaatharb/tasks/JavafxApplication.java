@@ -23,7 +23,7 @@ public class JavafxApplication extends Application {
 			genericApplicationContext.registerBean(HostServices.class, this::getHostServices);
 		};
 
-		this.context = new SpringApplicationBuilder().sources(BootifulFxApplication.class).initializers(initializer)
+		this.context = new SpringApplicationBuilder().sources(TasksDesktopApplication.class).initializers(initializer)
 				.build().run(getParameters().getRaw().toArray(new String[0]));
 	}
 
