@@ -1,8 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TasksService } from './services/tasks.service';
 
 describe('AppComponent', () => {
+
+  const tasksServiceSpy = jasmine.createSpy('tasksService');
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -11,6 +15,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        {provide: TasksService, useClass: tasksServiceSpy}
+      ]
     }).compileComponents();
   });
 

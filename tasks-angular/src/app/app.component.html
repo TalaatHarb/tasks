@@ -1,18 +1,13 @@
 <div class="container">
   <header class="header">
-    <input type="text" class="task-input"/>
-    <button class=".btn task-add">+</button>
+    <input id="taskInput" type="text" class="task-input" [(ngModel)]="details" #taskInput/>
+    <button class=".btn task-add" (click)="addClicked()">+</button>
+    <button class=".btn task-reload" (click)="reloadTasks()">R</button>
   </header>
   <main class="content">
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
-    <div class="task">Task </div>
+    <ng-container *ngIf="!loading" >
+      <div class="task" *ngFor="let task of tasks">{{task.details}}</div>
+    </ng-container>
+    <div *ngIf="loading">Loading...</div>
   </main>
 </div>

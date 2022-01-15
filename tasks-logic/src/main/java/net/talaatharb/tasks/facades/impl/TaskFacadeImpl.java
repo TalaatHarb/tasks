@@ -36,8 +36,8 @@ public class TaskFacadeImpl implements TaskFacade {
 	}
 
 	@Override
-	public Page<TaskDto> findAllTasks(Pageable pageable) {
-		return taskMapper.fromEntityToDTO(taskService.findAllTasks(pageable));
+	public Page<TaskDto> findPageOfTasks(Pageable pageable) {
+		return taskMapper.fromEntityToDTO(taskService.findPageOfTasks(pageable));
 	}
 
 	@Override

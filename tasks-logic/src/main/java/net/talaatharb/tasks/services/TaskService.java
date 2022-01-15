@@ -38,7 +38,7 @@ public interface TaskService {
 	 * @param pageable The specification for the page of tasks that is requested from the database
 	 * @return
 	 */
-	public Page<Task> findAllTasks(Pageable pageable);
+	public Page<Task> findPageOfTasks(Pageable pageable);
 
 	/**
 	 * Get a specific task by id from the database if it exists

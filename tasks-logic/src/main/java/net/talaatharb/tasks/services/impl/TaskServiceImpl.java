@@ -48,7 +48,7 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Task> findAllTasks(Pageable pageable) {
+	public Page<Task> findPageOfTasks(Pageable pageable) {
 		log.debug("Retrieving page of tasks with the following specification {}", pageable);
 		return taskRepository.findAll(pageable);
 	}

@@ -39,7 +39,7 @@ public interface TaskFacade {
 	 * @param pageable
 	 * @return
 	 */
-	public Page<TaskDto> findAllTasks(Pageable pageable);
+	public Page<TaskDto> findPageOfTasks(Pageable pageable);
 
 	/**
 	 * Get a task given its id

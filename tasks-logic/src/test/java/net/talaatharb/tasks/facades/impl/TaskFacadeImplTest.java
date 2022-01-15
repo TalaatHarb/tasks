@@ -64,9 +64,9 @@ class TaskFacadeImplTest {
 	void testFindAllTasksPageable() {
 		final Pageable pageable = Pageable.ofSize(10);
 
-		taskFacade.findAllTasks(pageable);
+		taskFacade.findPageOfTasks(pageable);
 
-		Mockito.verify(taskService).findAllTasks(pageable);
+		Mockito.verify(taskService).findPageOfTasks(pageable);
 	}
 
 	@Test

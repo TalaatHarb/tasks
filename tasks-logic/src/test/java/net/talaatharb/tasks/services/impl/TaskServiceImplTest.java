@@ -57,7 +57,7 @@ class TaskServiceImplTest {
 	void testFindAllTasksPageable() {
 		final Pageable pageable = Pageable.ofSize(10);
 
-		taskService.findAllTasks(pageable);
+		taskService.findPageOfTasks(pageable);
 
 		Mockito.verify(taskRepository).findAll(pageable);
 	}
