@@ -12,7 +12,7 @@
 	<description>Desktop version for the tasks application</description>
 
 	<properties>
-		<javafx.version>17.0.1</javafx.version>
+		<javafx.version>17.0.6</javafx.version>
 		<testfx.version>4.0.16-alpha</testfx.version>
 		<monocole.version>jdk-11+26</monocole.version>
 	</properties>
